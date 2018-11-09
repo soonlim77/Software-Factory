@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class LetterInfo 
+    {
+     
+
+        public LetterInfo()
+        {
+            
+        }
+
+        public LetterInfo(string p)
+        {
+            if (p.CompareTo("Plain") == 0)
+            {
+                LetterProofType = PackageProofTypeEnum.Plain;
+            } 
+            else if (p.CompareTo("Weather_Proof") == 0)
+            {
+                LetterProofType = PackageProofTypeEnum.Weather_Proof;
+            }
+            else if (p.CompareTo("Fire_Proof") == 0)
+            {
+                LetterProofType = PackageProofTypeEnum.Fire_Proof;
+            }
+            else
+            {
+                throw new Exception(String.Format("\"{0}\": is unexpected, only 'Plain', 'Weather_Proof' and 'Fire_Proof' is expected", p));
+            }
+
+        }
+
+        public PackageProofTypeEnum LetterProofType { get; set; }
+    }
+}

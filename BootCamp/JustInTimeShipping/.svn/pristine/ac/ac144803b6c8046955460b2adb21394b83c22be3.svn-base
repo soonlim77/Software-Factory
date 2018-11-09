@@ -1,0 +1,19 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+
+namespace JustInTimeShippingCore
+{
+    public class PostCodeValidator : IValidator<String>
+    {
+        private string pattern = "[0-9]{5}";
+
+        public bool Validate(string input)
+        {
+            Match match = Regex.Match(input, pattern);
+            return match.Success;
+        }
+    }
+}

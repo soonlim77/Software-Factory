@@ -1,0 +1,29 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+
+    [TestClass()]
+    public class DeliveryTimeHandlerTest
+    {
+
+
+        /// <summary>
+        ///A test for Process
+        ///</summary>
+        [TestMethod()]
+        public void ProcessTest()
+        {
+            DeliveryTimeHandler target = new DeliveryTimeHandler(); 
+            ShippingDetail input = TestShippingDetailFactory.GetAirBoxShippingDetailInstance();
+            ShippingDetail expected = TestShippingDetailFactory.GetAirBoxShippingDetailInstance();
+            expected.DeliveryTime = 0.25;
+            ShippingDetail actual;
+            actual = target.Process(input);
+            Assert.AreEqual(expected.DeliveryTime, actual.DeliveryTime);
+           
+        }
+    }
+}

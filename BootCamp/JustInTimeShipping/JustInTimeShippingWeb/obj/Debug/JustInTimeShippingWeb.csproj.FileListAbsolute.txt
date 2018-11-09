@@ -1,0 +1,8 @@
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\bin\JustInTimeShippingWeb.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\bin\JustInTimeShippingWeb.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\bin\JustInTimeShippingCore.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\bin\SAM.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\bin\JustInTimeShippingCore.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\obj\Debug\ResolveAssemblyReference.cache
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\obj\Debug\JustInTimeShippingWeb.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingWeb\obj\Debug\JustInTimeShippingWeb.pdb

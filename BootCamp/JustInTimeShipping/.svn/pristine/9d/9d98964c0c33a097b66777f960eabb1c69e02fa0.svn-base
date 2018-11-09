@@ -1,0 +1,24 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+
+namespace JustInTimeShippingCore
+{
+    public class XmlPersistantHandler : IHandler<FileInfo, object>
+    {
+
+        public FileInfo Process(object input)
+        {
+            FileInfo fileInfo;
+
+            // Serialize input to a File C:\ShippingDetails.xml
+
+            //
+            fileInfo = new FileInfo("c:\\ShippingDetails.xml");
+
+            return fileInfo;
+        }
+    }
+}

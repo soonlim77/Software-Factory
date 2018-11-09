@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.IO;
+using System.Xml.Serialization;
+
+namespace JustInTimeShippingCore
+{
+    public class XmlPersistantHandler : IHandler<string, object>
+    {
+
+        public string Process(object input)
+        {
+          
+            string path=@"C:\TEMP\ShippingDetails.xml";
+            using (FileStream fs = File.Open(path, FileMode.Create,FileAccess.ReadWrite))
+            {
+                using (TextWriter WriteFileStream = new StreamWriter(fs))
+                {
+                    try
+                    {
+                        XmlSerializer serializer = new XmlSerializer(typeof(ShippingDetail));
+                        serializer.Serialize(WriteFileStream, input);
+                    }
+                    catch (Exception e)
+                    {
+                        
+                        throw e;
+                    }
+                                      
+                }
+            }        
+               
+            return path;
+        }
+    }
+}

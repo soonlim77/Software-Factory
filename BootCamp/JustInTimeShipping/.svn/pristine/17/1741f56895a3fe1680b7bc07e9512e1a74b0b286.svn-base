@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+
+namespace JustInTimeShippingForm
+{
+    public partial class JustInTimeShippingForm : Form
+    {
+        public JustInTimeShippingForm()
+        {
+            InitializeComponent();
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSenderPostal_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSenderCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSenderStates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+                                
+
+               //if ( validationsenderinfo( txtSender.Text.Trim(), txtSenderStreet.Text.Trim(),txtSenderCity.Text.Trim(),cbSenderStates.SelectedItem.ToString(),txtSenderPostal.Text.Trim()))
+                                          
+               //   {
+                   MessageBox.Show(string.Format("{0}\n{1}\n{2}\n{3}\n{4}\n\n{5}\n{6}\n{7}\n{8}\n{9}", 
+                    txtSender.Text.Trim(),
+                    txtSenderStreet.Text.Trim(),
+                    txtSenderCity.Text.Trim(),
+                    cbSenderStates.SelectedItem.ToString(),
+                    txtSenderPostal.Text.Trim(),
+                    txtReceipient.Text.Trim(),
+                    txtReceipientStreet.Text.Trim(),
+                    txtReceipientCity.Text,
+                    cbReceipientStates.SelectedItem.ToString(),
+                    txtReceipientPostal.Text.Trim()));
+                   // }
+                   //else 
+                   //    MessageBox.Show("Some fields is missing");
+                           
+        }
+
+
+
+        private bool validationsenderinfo(string sName, string sStreet, string sCity, string sState, string sPostal)
+        {
+            if (sName == null || sStreet == null || sCity == null || sState == null || sPostal == null)
+                return false;
+            else
+                return true;
+
+        
+        
+        }
+
+        
+
+
+    }
+}

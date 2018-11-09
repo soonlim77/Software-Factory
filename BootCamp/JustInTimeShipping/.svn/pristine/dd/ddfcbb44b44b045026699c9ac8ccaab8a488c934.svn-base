@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class ValidationResult
+    {
+        public static ValidationResult GetSuccessResultInstance() {
+            return new ValidationResult(true);
+        }
+
+        public static ValidationResult GetFailResultInstance(string message)
+        {
+            return new ValidationResult(false, message);
+        }
+
+
+        private ValidationResult(bool value) {
+            result = value;
+        }
+         
+        private ValidationResult(bool value, string msg) {
+            result = value;
+            message = msg;
+        }
+
+        public bool result { get; set; }
+        public string message { get; private set; }
+    }
+}

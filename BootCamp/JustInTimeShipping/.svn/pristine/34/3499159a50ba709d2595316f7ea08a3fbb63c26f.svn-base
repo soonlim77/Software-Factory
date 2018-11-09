@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class PackageInfoValidator
+    {
+        public ValidationResult Validate(string input)
+        {
+            PackageInfo pinfo = new PackageInfo();
+            if (input.CompareTo("Box")==0) 
+            {
+                  if(!string.IsNullOrEmpty(pinfo.Height.ToString() )&& 
+                     !string.IsNullOrEmpty(pinfo.Width.ToString())&&
+                     !string.IsNullOrEmpty(pinfo.Depth.ToString()) )
+                   return ValidationResult.GetSuccessResult();
+                  
+                  else
+                      return ValidationResult.GetFailResult("All dimension of boxes need to be known");
+
+            }
+            else
+            {
+                return ValidationResult.GetFailResult("");
+            }
+
+        }
+
+
+
+    }
+}

@@ -1,0 +1,6 @@
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingCore\bin\Debug\JustInTimeShippingCore.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingCore\bin\Debug\JustInTimeShippingCore.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingCore\bin\Debug\SAM.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingCore\obj\Debug\ResolveAssemblyReference.cache
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingCore\obj\Debug\JustInTimeShippingCore.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingCore\obj\Debug\JustInTimeShippingCore.pdb

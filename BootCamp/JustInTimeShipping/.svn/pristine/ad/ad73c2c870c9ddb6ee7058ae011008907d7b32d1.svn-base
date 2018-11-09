@@ -1,0 +1,60 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class ZoneDifferenceDecoratorFactory
+    {
+        private IZoneDifferenceDecorator timeZoneDifferenceDecorator = null;
+        private IZoneDifferenceDecorator orientationZoneDifferenceDecorator = null;
+        private static ZoneDifferenceDecoratorFactory instance = null; 
+
+        private ZoneDifferenceDecoratorFactory() { }
+
+        // Singleton implementation to get instance of the WeightAdatperInstance.
+        public static ZoneDifferenceDecoratorFactory GetInstance()
+        {
+            if (instance == null)
+            {
+                instance = new ZoneDifferenceDecoratorFactory();
+            }
+            return instance;
+        }
+
+        public IZoneDifferenceDecorator GetZoneDifferenceDecoratorInstance(DeliveryMethodEnum input)
+        {
+            IZoneDifferenceDecorator result = null;
+            switch (input)
+            {
+                case DeliveryMethodEnum.Air:
+                case DeliveryMethodEnum.Ground:
+                    if (timeZoneDifferenceDecorator == null)
+                    {
+                        timeZoneDifferenceDecorator = new TimeZoneDifferenceDecorator();
+                    }
+                    result = timeZoneDifferenceDecorator;
+                    break;
+                case DeliveryMethodEnum.Rail:
+                    if (orientationZoneDifferenceDecorator == null)
+                    {
+                        orientationZoneDifferenceDecorator = new OrientationZoneDifferenceDecorator();
+                    }
+                    result = orientationZoneDifferenceDecorator;
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+    
+    }
+
+    public enum ZoneDifferenceDecoratorEnum
+    {
+        TimeZone,
+        Orientation
+    };
+}

@@ -1,0 +1,130 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class JustInTimeShippingFacade : IGenericCommand<IResult, ShippingDetail>
+    {
+       
+
+        public IResult Execute(ShippingDetail detail)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+            Address originAddress = detail.OriginAddress;
+            Address destinationAddress = detail.DestinationAddress;
+            string msg = String.Empty;
+            bool status = false;
+            string xmlFile;
+
+            try
+            {
+                detail.PackageInfo.Weight = WeightAdapterFactory.GetInstance().GetWeightAdapterInstance(WeightAdapterEnum.SAM).GetWeight();
+                detail = new DeliveryTimeCommand().Execute(detail);
+                detail = new ShippingCostCommand().Execute(detail);
+                xmlFile = new XmlPersistantCommand().Execute(detail);
+
+                IResult originAddressValidation = new AddressValidator().Validate(originAddress);
+                IResult originPostCodeValidation = new PostCodeValidator().Validate(originAddress.PostalCode);
+                IResult destAddressValidation = new AddressValidator().Validate(destinationAddress);
+                IResult destPostCodeValidation = new PostCodeValidator().Validate(destinationAddress.PostalCode);
+                IResult deliveryTypeValidation = new DeliveryTypeValidator().Validate(detail.DeliveryMethod.ToString());
+                IResult packageInfoValidation = new PackageInfoValidator().Validate(detail.PackageInfo);
+             
+
+                if (originAddressValidation.IsSuccess &&
+                    originPostCodeValidation.IsSuccess &&
+                    destAddressValidation.IsSuccess &&
+                    destPostCodeValidation.IsSuccess &&
+                    deliveryTypeValidation.IsSuccess &&
+                    packageInfoValidation.IsSuccess)
+                {
+                    strBuilder.AppendLine("Id: " + detail.Id);
+                    strBuilder.AppendLine("Package Type: " + detail.PackageInfo.PackageType.ToString());
+                    if (detail.PackageInfo.PackageType == PackageTypeEnum.Box)
+                    {  
+                        strBuilder.AppendLine("Height: " + detail.PackageInfo.BoxInfo.Height);
+                        strBuilder.AppendLine("Width: " + detail.PackageInfo.BoxInfo.Width);
+                        strBuilder.AppendLine("Depth: " + detail.PackageInfo.BoxInfo.Depth);
+                        strBuilder.AppendLine("Is insured? :" + detail.IsInsured);
+                    }
+                    else
+                    {
+                        strBuilder.AppendLine("Letter Type: " + detail.PackageInfo.LetterInfo.LetterProofType.ToString());
+                    }
+                    strBuilder.AppendLine("Weight: " + detail.PackageInfo.Weight + " Ounce");
+                    strBuilder.AppendLine("");
+                    strBuilder.AppendLine("Origin:");
+                    strBuilder.AppendLine("=======");
+                    strBuilder.AppendLine("Name:       " + originAddress.Name);
+                    strBuilder.AppendLine("Street:     " + originAddress.Street);
+                    strBuilder.AppendLine("City:       " + originAddress.City);
+                    strBuilder.AppendLine("State:      " + originAddress.State);
+                    strBuilder.AppendLine("Postal Code:" + originAddress.PostalCode);
+                    strBuilder.AppendLine("");
+                    strBuilder.AppendLine("Destination:");
+                    strBuilder.AppendLine("===========");
+                    strBuilder.AppendLine("Name:       " + destinationAddress.Name);
+                    strBuilder.AppendLine("Street:     " + destinationAddress.Street);
+                    strBuilder.AppendLine("City:       " + destinationAddress.City);
+                    strBuilder.AppendLine("State:      " + destinationAddress.State);
+                    strBuilder.AppendLine("Postal Code:" + destinationAddress.PostalCode);
+                    strBuilder.AppendLine("");
+                    strBuilder.AppendLine("Delivery Type: " + detail.DeliveryMethod.ToString());
+                    strBuilder.AppendLine("Delivery Time: "+ detail.DeliveryTime.ToString()+" days");
+                    strBuilder.AppendLine("Delivery Cost: " + String.Format("{0:C2}", detail.Cost));
+                
+                    status = true;
+                }
+                if (!originAddressValidation.IsSuccess || !destAddressValidation.IsSuccess)
+                {
+
+                    if (!originAddressValidation.IsSuccess)
+                    {
+                        strBuilder.AppendLine("Origin Address     : " + originAddressValidation.Message);
+                    }
+                    if (!destAddressValidation.IsSuccess)
+                    {
+                        strBuilder.AppendLine("Destination Address: " + destAddressValidation.Message);
+                    }
+
+
+                }
+                if (!originPostCodeValidation.IsSuccess || !destPostCodeValidation.IsSuccess)
+                {
+
+                    if (!originPostCodeValidation.IsSuccess)
+                    {
+                        strBuilder.AppendLine("\nOrigin Address     : " + originPostCodeValidation.Message);
+                    }
+                    if (!destPostCodeValidation.IsSuccess)
+                    {
+                        strBuilder.AppendLine("\nDestination Address: " + destPostCodeValidation.Message);
+                    }
+
+
+                }
+                if (!deliveryTypeValidation.IsSuccess)
+                {
+                    strBuilder.AppendLine("Delivery Type: " + deliveryTypeValidation.Message);
+                }
+                if (!packageInfoValidation.IsSuccess)
+                {
+                    strBuilder.AppendLine("Package Information: " + packageInfoValidation.Message);
+                }
+
+                msg = strBuilder.ToString();
+            }
+            catch (Exception e)
+            {
+                status = false;
+                msg = e.Message;
+
+            }
+
+            return (status ? ResultFactory.GetSuccessWithMessageResultInstance(msg) : ResultFactory.GetFailResultInstance(msg));
+
+        }
+    }
+}

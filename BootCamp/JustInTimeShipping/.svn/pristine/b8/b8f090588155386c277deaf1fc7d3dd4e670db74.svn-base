@@ -1,0 +1,524 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="1409c0b2-1771-482e-a7ea-bd4c2bb0e58f"
+  name="JustInTimeShippingModeling" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="aa95f9d7-d038-401d-b509-8f5269cc7c27"
+        name="Customer"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="207a0869-afe0-49a4-bcd9-adf9beacc02b"
+            isDerived="false"
+            sourceEndRoleName="Customer"
+            targetEndRoleName="Select Package Type"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="26d6b9b4-43ae-4998-b074-e4edb8a7a566"
+              LastKnownName="Select Package Type"
+              LastKnownLocation="JustInTimeShippingModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="abc94db5-0e79-4f1e-b7a4-cc9576dfbed0"
+                  name="Customer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5786c7db-1cff-49af-b67a-e54a601bb407"
+                  name="Select Package Type"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="b73ae051-7873-4cf4-b88c-3443b0358dda"
+            isDerived="false"
+            sourceEndRoleName="Customer"
+            targetEndRoleName="Provides Origin &amp; Destination Adresses"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="ba7dbae3-e3b4-41b1-bd26-e749a91b08c6"
+              LastKnownName="Provides Origin &amp; Destination Adresses"
+              LastKnownLocation="JustInTimeShippingModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="6309a428-e1ac-44ce-84ac-f7b2a00d4b95"
+                  name="Customer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1e7de99a-c104-49ad-88c6-27303d51b697"
+                  name="Provides Origin &amp; Destination Adresses"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6b694d3e-833d-4a46-97d7-4dffdd66a57d"
+            isDerived="false"
+            sourceEndRoleName="Customer"
+            targetEndRoleName="Select Delivery Type"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="af789678-f380-4e7f-adf9-5ad62c57efae"
+              LastKnownName="Select Delivery Type"
+              LastKnownLocation="JustInTimeShippingModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e91df4ea-fa7e-4e2c-a0d7-addb1a332ee9"
+                  name="Customer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="89502cf5-2b0f-46c9-8748-44d79a06e5e8"
+                  name="Select Delivery Type"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7ebe9ec3-951e-4383-85c6-155d17258f48"
+            isDerived="false"
+            sourceEndRoleName="Customer"
+            targetEndRoleName="User Accept or Decline"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="76dac70e-8040-42ac-9fe1-c1872064ffee"
+              LastKnownName="User Accept or Decline"
+              LastKnownLocation="JustInTimeShippingModeling.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f78d215d-da48-452c-9cf0-aff94a40b011"
+                  name="Customer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="9071b15e-0c34-479c-ad6d-c18669c5aadc"
+                  name="User Accept or Decline"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="26d6b9b4-43ae-4998-b074-e4edb8a7a566"
+        name="Select Package Type"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="ba7dbae3-e3b4-41b1-bd26-e749a91b08c6"
+        name="Provides Origin &amp; Destination Adresses"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="af789678-f380-4e7f-adf9-5ad62c57efae"
+        name="Select Delivery Type"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="76dac70e-8040-42ac-9fe1-c1872064ffee"
+        name="User Accept or Decline"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6e06dd33-3227-453e-8144-937653822558"
+        name="Address"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="829fb0a5-60f6-42b9-846a-ec3222051d30"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="3ff08a8d-8104-4d4e-97a1-da89b406d508"
+            name="Street"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="c9a9e742-0e57-499b-a3cb-f47ad316fa71"
+            name="City"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="693e20ca-3569-4bae-b9a1-e4f29f482321"
+            name="State"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="a23f53ce-23ee-4f95-9db2-1120da013077"
+            name="PostalCode"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="8cf95a8f-3075-48b8-a12a-a860c2b787c3"
+        name="ShippingDetails"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="3bd3660e-2b61-441b-8066-95c03d2e67f3"
+            name="OriginAddress"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="6e06dd33-3227-453e-8144-937653822558"
+                LastKnownName="Address"
+                LastKnownLocation="JustInTimeShippingModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="7f5cbbbc-1442-407c-8af7-ba2a098084d6"
+            name="DestinationAddress"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="6e06dd33-3227-453e-8144-937653822558"
+                LastKnownName="Address"
+                LastKnownLocation="JustInTimeShippingModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="49c715f0-bf87-4aca-8f1e-352188fe4856"
+            name="DeliveryType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="625785bf-d852-46c4-a7a4-fee3839db1e6"
+                LastKnownName="DeliveryTypeEnum"
+                LastKnownLocation="JustInTimeShippingModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="17799910-5524-415f-b9a2-9c2f01b929c8"
+            name="PackageInfo"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="b5a2a39f-297a-4ddc-aa6e-d4111dc42bc9"
+                LastKnownName="PackageInfo"
+                LastKnownLocation="JustInTimeShippingModeling.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="d7736d4f-b4e0-46a5-b63b-15e5e1604c66"
+            name="Id"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="e348cd4a-b08a-46c1-88c8-5102d0377494"
+        name="PackageTypeEnum"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="9a11bd97-182f-4e39-89e5-e45cd4addd65"
+            name="Letter" />
+          <enumerationLiteral
+            Id="696d2d23-fc89-4eb9-ae9c-11993e556df4"
+            name="Box" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="625785bf-d852-46c4-a7a4-fee3839db1e6"
+        name="DeliveryTypeEnum"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="847f56dc-4af2-4f93-9e1b-0b247a70937e"
+            name="Air" />
+          <enumerationLiteral
+            Id="38def974-afbb-4f08-b603-66661104c971"
+            name="Ground" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b5a2a39f-297a-4ddc-aa6e-d4111dc42bc9"
+        name="PackageInfo"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="bcaa8f6e-9b9a-4fea-be3e-c499f6ab78cd"
+            name="Height"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="b7128b30-5a78-4c61-9077-5afea7a7528f"
+            name="Width"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="d03fc410-3e03-49ba-b86e-8333c91d5e4b"
+            name="Depth"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false" />
+          <property
+            Id="11ac7a29-5c07-4f3d-900c-942f0e98f000"
+            name="PackageType"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <enumerationMoniker
+                Id="e348cd4a-b08a-46c1-88c8-5102d0377494"
+                LastKnownName="PackageTypeEnum"
+                LastKnownLocation="JustInTimeShippingModeling.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="a8eec77f-30f0-4775-97ee-ddf08ee7e3d4"
+        name="string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="6145edf7-693e-48bb-8220-6b90e031fe53"
+        name="JustInTimeShippingController"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="7795a22d-d831-4736-ae58-bffab405c7e2"
+            name="Upsert"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="93dc38ce-f9a8-4498-94e4-ae32cff931b3"
+                  name="ShippingDetail detail"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>

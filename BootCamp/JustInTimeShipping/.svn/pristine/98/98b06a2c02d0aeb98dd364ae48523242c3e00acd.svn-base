@@ -1,0 +1,172 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class JustInTimeShippingFrontController
+    {
+        public string Process(Address originAddress, Address destinationAddress)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+
+            ValidationResult originAddressValidation = new AddressValidator().Validate(originAddress);
+            ValidationResult originPostCodeValidation = new PostCodeValidator().Validate(originAddress.PostalCode);
+            ValidationResult destAddressValidation = new AddressValidator().Validate(destinationAddress);
+            ValidationResult destPostCodeValidation = new PostCodeValidator().Validate(destinationAddress.PostalCode);
+
+            if (originAddressValidation.result &&
+                originPostCodeValidation.result &&
+                destAddressValidation.result &&
+                destPostCodeValidation.result)
+            {
+
+                strBuilder.AppendLine("Origin:");
+                strBuilder.AppendLine("=======");
+                strBuilder.AppendLine("Name:       " + originAddress.Name);
+                strBuilder.AppendLine("Street:     " + originAddress.Street);
+                strBuilder.AppendLine("City:       " + originAddress.City);
+                strBuilder.AppendLine("State:      " + originAddress.State);
+                strBuilder.AppendLine("Postal Code:" + originAddress.PostalCode);
+                strBuilder.AppendLine("");
+                strBuilder.AppendLine("Destination:");
+                strBuilder.AppendLine("===========");
+                strBuilder.AppendLine("Name:       " + destinationAddress.Name);
+                strBuilder.AppendLine("Street:     " + destinationAddress.Street);
+                strBuilder.AppendLine("City:       " + destinationAddress.City);
+                strBuilder.AppendLine("State:      " + destinationAddress.State);
+                strBuilder.AppendLine("Postal Code:" + destinationAddress.PostalCode);
+
+                return strBuilder.ToString();
+            }
+            else if (!originAddressValidation.result || !destAddressValidation.result)
+            {
+                string msg=String.Empty;
+                if (!originAddressValidation.result)
+                {
+                    msg += "\nOrigin Address     : " + originAddressValidation.message;
+                }
+                if (!destAddressValidation.result)
+                {
+                    msg += "\nDestination Address: " + destAddressValidation.message;
+                }
+
+                return msg;
+            }
+            else if (!originPostCodeValidation.result || !destPostCodeValidation.result)
+            {
+                string msg = String.Empty;
+                if (!originPostCodeValidation.result)
+                {
+                    msg += "\nOrigin Address     : " + originPostCodeValidation.message;
+                }
+                if (!destPostCodeValidation.result)
+                {
+                    msg += "\nDestination Address: " + destPostCodeValidation.message;
+                }
+
+                return msg;
+            }
+
+            return "Unexpected Error";
+          
+        }
+
+        public ProcessStatus Process(ShippingDetail detail)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+            Address originAddress = detail.OriginAddress;
+            Address destinationAddress = detail.DestinationAddress;
+            string msg = String.Empty;
+            bool status = false;
+
+            ValidationResult originAddressValidation = new AddressValidator().Validate(originAddress);
+            ValidationResult originPostCodeValidation = new PostCodeValidator().Validate(originAddress.PostalCode);
+            ValidationResult destAddressValidation = new AddressValidator().Validate(destinationAddress);
+            ValidationResult destPostCodeValidation = new PostCodeValidator().Validate(destinationAddress.PostalCode);
+            ValidationResult deliveryTypeValidation = new DeliveryTypeValidator().Validate(detail.DeliveryType.ToString());
+            ValidationResult packageInfoValidation = new PackageInfoValidator().Validate(detail.PackageInfo);
+
+            if (originAddressValidation.result &&
+                originPostCodeValidation.result &&
+                destAddressValidation.result &&
+                destPostCodeValidation.result && 
+                deliveryTypeValidation.result && 
+                packageInfoValidation.result)
+            {
+                strBuilder.AppendLine("Package Type: " + detail.PackageInfo.PackageType.ToString());
+                if (detail.PackageInfo.PackageType == PackageTypeEnum.Box)
+                {
+                    strBuilder.AppendLine("Height: " + detail.PackageInfo.BoxInfo.Height);
+                    strBuilder.AppendLine("Width: " + detail.PackageInfo.BoxInfo.Width);
+                    strBuilder.AppendLine("Depth: " + detail.PackageInfo.BoxInfo.Depth);
+                }
+                else 
+                {
+                    strBuilder.AppendLine("Letter Type: " + detail.PackageInfo.LetterInfo.LetterProofType.ToString());
+                }
+                strBuilder.AppendLine("");
+                strBuilder.AppendLine("Origin:");
+                strBuilder.AppendLine("=======");
+                strBuilder.AppendLine("Name:       " + originAddress.Name);
+                strBuilder.AppendLine("Street:     " + originAddress.Street);
+                strBuilder.AppendLine("City:       " + originAddress.City);
+                strBuilder.AppendLine("State:      " + originAddress.State);
+                strBuilder.AppendLine("Postal Code:" + originAddress.PostalCode);
+                strBuilder.AppendLine("");
+                strBuilder.AppendLine("Destination:");
+                strBuilder.AppendLine("===========");
+                strBuilder.AppendLine("Name:       " + destinationAddress.Name);
+                strBuilder.AppendLine("Street:     " + destinationAddress.Street);
+                strBuilder.AppendLine("City:       " + destinationAddress.City);
+                strBuilder.AppendLine("State:      " + destinationAddress.State);
+                strBuilder.AppendLine("Postal Code:" + destinationAddress.PostalCode);
+                strBuilder.AppendLine("");
+                strBuilder.AppendLine("Delivery Type: " + detail.DeliveryType.ToString());
+
+                msg =  strBuilder.ToString();
+                status = true;
+            }
+            if (!originAddressValidation.result || !destAddressValidation.result)
+            {
+
+                if (!originAddressValidation.result)
+                {
+                    msg += "\nOrigin Address     : " + originAddressValidation.message;
+                }
+                if (!destAddressValidation.result)
+                {
+                    msg += "\nDestination Address: " + destAddressValidation.message;
+                }
+
+            
+            }
+            if (!originPostCodeValidation.result || !destPostCodeValidation.result)
+            {
+  
+                if (!originPostCodeValidation.result)
+                {
+                    msg += "\nOrigin Address     : " + originPostCodeValidation.message;
+                }
+                if (!destPostCodeValidation.result)
+                {
+                    msg += "\nDestination Address: " + destPostCodeValidation.message;
+                }
+
+          
+            }
+            if (!deliveryTypeValidation.result)
+            {
+                msg += "Delivery Type: " + deliveryTypeValidation.message;
+            }
+            if (!packageInfoValidation.result)
+            {
+                msg += "Package Information: " + packageInfoValidation.message;
+            }
+
+            return (status ? ProcessStatus.GetSuccess(msg) : ProcessStatus.GetFail(msg));
+
+        }
+    }
+}

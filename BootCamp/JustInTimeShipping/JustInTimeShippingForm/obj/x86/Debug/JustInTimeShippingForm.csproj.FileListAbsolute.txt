@@ -1,0 +1,12 @@
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\JustInTimeShippingForm.Properties.Resources.resources
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\JustInTimeShippingForm.JustInTimeShippingForm.resources
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\bin\Debug\JustInTimeShippingForm.exe
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\bin\Debug\JustInTimeShippingForm.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\JustInTimeShippingForm.exe
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\obj\x86\Debug\JustInTimeShippingForm.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\bin\Debug\JustInTimeShippingCore.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\bin\Debug\JustInTimeShippingCore.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShippingForm\bin\Debug\SAM.dll

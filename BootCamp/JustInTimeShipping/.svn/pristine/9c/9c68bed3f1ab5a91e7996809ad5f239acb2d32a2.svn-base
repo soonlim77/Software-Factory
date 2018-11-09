@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class DeliveryRequestHandler : IHandler<ProcessStatus, DeliveryRequestInfo>
+    {
+        public ProcessStatus Process(DeliveryRequestInfo input)
+        {
+            throw new NotImplementedException();
+        }
+    }
+}

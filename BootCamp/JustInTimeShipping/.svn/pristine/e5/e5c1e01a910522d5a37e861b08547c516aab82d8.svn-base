@@ -1,0 +1,35 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+    
+    
+    /// <summary>
+    ///This is a test class for ZoneDifferenceDecoratorFactoryTest and is intended
+    ///to contain all ZoneDifferenceDecoratorFactoryTest Unit Tests
+    ///</summary>
+    [TestClass()]
+    public class ZoneDifferenceDecoratorFactoryTest
+    {
+
+
+      
+
+        /// <summary>
+        ///A test for GetZoneDifferenceDecoratorInstance
+        ///</summary>
+        [TestMethod()]
+        public void GetZoneDifferenceDecoratorInstanceTest()
+        {
+            ZoneDifferenceDecoratorFactory_Accessor target = new ZoneDifferenceDecoratorFactory_Accessor(); // TODO: Initialize to an appropriate value
+            DeliveryMethodEnum input = new DeliveryMethodEnum(); // TODO: Initialize to an appropriate value
+            IZoneDifferenceDecorator expected = null; // TODO: Initialize to an appropriate value
+            IZoneDifferenceDecorator actual;
+            actual = target.GetZoneDifferenceDecoratorInstance(input);
+            Assert.AreEqual(expected, actual);
+            Assert.Inconclusive("Verify the correctness of this test method.");
+        }
+    }
+}

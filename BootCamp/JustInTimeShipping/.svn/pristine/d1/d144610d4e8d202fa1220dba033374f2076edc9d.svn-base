@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class ProcessStatus
+    {
+        public string Message {get; private set;}
+        public bool IsSuccess { get; private set;}
+
+        private ProcessStatus(bool status, string msg)
+        {
+            Message = msg;
+            IsSuccess = status;
+        }
+
+        public static ProcessStatus GetSuccess(string msg)
+        {
+            return new ProcessStatus(true, msg);
+        }
+
+        public static  ProcessStatus GetFail(string msg)
+        {
+            return new ProcessStatus(false, msg);
+        }
+    }
+}

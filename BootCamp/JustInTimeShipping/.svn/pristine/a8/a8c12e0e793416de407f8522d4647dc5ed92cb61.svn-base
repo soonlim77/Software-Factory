@@ -1,0 +1,147 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using JustInTimeShippingCore;
+using SAM;
+
+namespace JustInTimeShippingForm
+{
+    public partial class JustInTimeShippingForm : Form
+    {
+        Address originAddress;
+        Address destinationAddress;
+        ShippingDetail detail;
+        double weight = 0;
+
+        JustInTimeShippingFrontHandler controller = new JustInTimeShippingFrontHandler();
+
+        public JustInTimeShippingForm()
+        {
+            InitializeComponent();
+        }
+
+
+
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+
+            originAddress = new Address(txtSender.Text.Trim(), 
+                txtSenderStreet.Text.Trim(), 
+                txtSenderCity.Text.Trim(), 
+                cbSenderStates.SelectedItem.ToString(), 
+                txtSenderPostal.Text.Trim());
+
+            destinationAddress = new Address(txtReceipient.Text.Trim(),
+                txtReceipientStreet.Text.Trim(),
+                txtReceipientCity.Text.Trim(),
+                cbReceipientStates.SelectedItem.ToString(),
+                txtReceipientPostal.Text.Trim());
+
+            detail = new ShippingDetail();
+            detail.OriginAddress = originAddress;
+            detail.DestinationAddress = destinationAddress;
+
+            
+
+            if (cbPackageType.SelectedItem.ToString().CompareTo("Box") == 0)
+            {
+                // Going to be deprecated
+                detail.PackageInfo = PackageInfoFactory.GetBoxPackageInstance( 
+                            Convert.ToInt32(numHeight.Value.ToString()), 
+                            Convert.ToInt32(numWidth.Value.ToString()),
+                            Convert.ToInt32(numDepth.Value.ToString()));
+
+            }
+            else 
+            {
+                detail.PackageInfo = PackageInfoFactory.GetLetterPackageInstance(cbLetterType.SelectedItem.ToString());
+            }
+            // Populate package information
+            detail.PackageInfo.Weight = weight;
+
+            // Capture Delivery Type
+            if ( cbDeliveryType.SelectedItem.ToString().CompareTo("Air")==0)
+            {
+                detail.DeliveryMethod = DeliveryMethodEnum.Air;
+            }
+            if (cbDeliveryType.SelectedItem.ToString().CompareTo("Ground") == 0)
+            {
+                detail.DeliveryMethod = DeliveryMethodEnum.Ground;
+            }
+
+
+            IResult processStatus = controller.Process(detail);
+
+            if (processStatus.IsSuccess)
+            {
+                string msg = processStatus.Message;
+                //msg += "Cost: XXX \n";
+                //msg += "Delivery Time:YYY\n";
+                //msg += "Weigh:"+weight;
+                MessageBox.Show(msg, "Click OK to Accept or Cancel to decline", MessageBoxButtons.OKCancel);
+            }
+            else
+            {
+                MessageBox.Show(processStatus.Message, "Fail");
+            }
+           
+                    
+        }
+
+        private void txtSender_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbPackageType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            ControlVisibilityBoxLetter();
+        }
+
+        private void ControlVisibilityBoxLetter()
+        {
+
+            if (cbPackageType.SelectedItem.ToString() != null && cbPackageType.SelectedItem.ToString().CompareTo("Box") == 0)
+            {
+                grDimension.Visible = true;
+                grLetterType.Visible = false;
+
+            }
+            else
+            {
+                grLetterType.Visible = true;
+                grDimension.Visible = false;
+            }
+        }
+
+      
+
+        private void JustInTimeShippingForm_Load(object sender, EventArgs e)
+        {
+            ControlVisibilityBoxLetter();
+        }
+
+        private void btnGetWeigh_Click(object sender, EventArgs e)
+        {
+            PackageInfo packageInfo = new PackageInfo("Plain");
+            SamWeightAdapter handler = new SamWeightAdapter();
+            this.weight = handler.Process();
+            txtWeigh.Text = this.weight.ToString()+" ounces";
+         
+        }
+
+
+
+    }
+}

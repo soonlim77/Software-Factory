@@ -1,0 +1,80 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+    
+    
+    /// <summary>
+    ///This is a test class for PackageInfoValidatorTest and is intended
+    ///to contain all PackageInfoValidatorTest Unit Tests
+    ///</summary>
+    [TestClass()]
+    public class PackageInfoValidatorTest
+    {
+
+
+      
+
+        #region Additional test attributes
+        // 
+        //You can use the following additional attributes as you write your tests:
+        //
+        //Use ClassInitialize to run code before running the first test in the class
+        //[ClassInitialize()]
+        //public static void MyClassInitialize(TestContext testContext)
+        //{
+        //}
+        //
+        //Use ClassCleanup to run code after all tests in a class have run
+        //[ClassCleanup()]
+        //public static void MyClassCleanup()
+        //{
+        //}
+        //
+        //Use TestInitialize to run code before running each test
+        //[TestInitialize()]
+        //public void MyTestInitialize()
+        //{
+        //}
+        //
+        //Use TestCleanup to run code after each test has run
+        //[TestCleanup()]
+        //public void MyTestCleanup()
+        //{
+        //}
+        //
+        #endregion
+
+
+        /// <summary>
+        ///A test for Validate
+        ///</summary>
+        [TestMethod()]
+        public void PackageInfoSuccessTest()
+        {
+            PackageInfo pinfo=new PackageInfo(PackageTypeEnum.Box,20,10,5);
+            PackageInfoValidator target = new PackageInfoValidator(); // TODO: Initialize to an appropriate value
+            string input = "Box"; // TODO: Initialize to an appropriate value
+            ValidationResult expected = ValidationResult.GetSuccessResult(); // TODO: Initialize to an appropriate value
+            ValidationResult actual=target.Validate(input,pinfo);
+
+            Assert.AreEqual(expected.result, actual.result);
+     
+        }
+
+        [TestMethod()]
+        public void PackageInfoFailTest()
+        {
+            PackageInfo pinfo = new PackageInfo(PackageTypeEnum.Box, 0,0,0);
+            PackageInfoValidator target = new PackageInfoValidator(); // TODO: Initialize to an appropriate value
+            string input = "Letter"; // TODO: Initialize to an appropriate value
+            ValidationResult expected = ValidationResult.GetSuccessResult(); // TODO: Initialize to an appropriate value
+            ValidationResult actual = target.Validate(input, pinfo);
+
+            Assert.AreEqual(expected.result, actual.result);
+
+        }
+    }
+}

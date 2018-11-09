@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="daac0947-606a-47a9-bba2-6f4b26234b7d" name="JustInTimeShipping" linkedPackageId="66e66897-6ab9-449d-be61-ddf88d02f0ba" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+  <profileInstances>
+    <packageHasProfileInstances Id="4ece543d-765f-4dab-9872-680efcd697bf">
+      <profileInstance Id="861e81dd-4a20-4a73-8829-0cd297d58302" name="StandardProfileL2">
+        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+      </profileInstance>
+      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances Id="c9c17bc9-8bfa-4631-b14e-a75befa1bd19">
+      <profileInstance Id="cd300625-defa-42e4-a05c-12e53f70cbf5" name="StandardProfileL3">
+        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+      </profileInstance>
+      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="72a0dbe3-0df8-4fc4-bf9b-fb057be01496" name="Address" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6e06dd33-3227-453e-8144-937653822558" />
+        <ownedAttributesInternal>
+          <property Id="419ab4bd-82e3-4da0-bbe0-60cc3db7d536" name="Name" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="829fb0a5-60f6-42b9-846a-ec3222051d30" />
+          </property>
+          <property Id="6b629ddb-a12a-4d2c-bdb0-b54675d4bafa" name="Street" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3ff08a8d-8104-4d4e-97a1-da89b406d508" />
+          </property>
+          <property Id="2ecd8aef-a9d7-4375-933a-e5a4a1cdefd7" name="City" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c9a9e742-0e57-499b-a3cb-f47ad316fa71" />
+          </property>
+          <property Id="0a713e6b-e2e1-4989-b317-9e21d88a7508" name="State" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="693e20ca-3569-4bae-b9a1-e4f29f482321" />
+          </property>
+          <property Id="6f8c278f-01f2-41a4-9662-a2df5b432655" name="PostalCode" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a23f53ce-23ee-4f95-9db2-1120da013077" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="7b4489b9-1888-45aa-a777-a738ccbf208c" name="ShippingDetails" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="8cf95a8f-3075-48b8-a12a-a860c2b787c3" />
+        <ownedAttributesInternal>
+          <property Id="b8737aaf-66c6-4510-96f7-aca6ad23a157" name="OriginAddress" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="3bd3660e-2b61-441b-8066-95c03d2e67f3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f03a9a7c-7d59-407f-9abb-497d38aac3d6" LastKnownName="Address" />
+            </type_NamedElement>
+          </property>
+          <property Id="05f91262-6e1a-4d39-a3d7-9681a662f3b9" name="DestinationAddress" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7f5cbbbc-1442-407c-8af7-ba2a098084d6" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="f03a9a7c-7d59-407f-9abb-497d38aac3d6" LastKnownName="Address" />
+            </type_NamedElement>
+          </property>
+          <property Id="b27d578f-084d-4a20-bd94-dbfccadbf773" name="DeliveryType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="49c715f0-bf87-4aca-8f1e-352188fe4856" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="2aae9c83-7f97-4ed4-b861-e21ad2aaec17" LastKnownName="DeliveryTypeEnum" />
+            </type_NamedElement>
+          </property>
+          <property Id="da83b15f-c89c-45da-95f0-dd23e0c09ddb" name="PackageInfo" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="17799910-5524-415f-b9a2-9c2f01b929c8" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="3285099a-faf6-4098-90de-2a8b95720c08" LastKnownName="PackageInfo" />
+            </type_NamedElement>
+          </property>
+          <property Id="2875ad4b-04ae-4c40-85ed-02c123c8fa5c" name="Id" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d7736d4f-b4e0-46a5-b63b-15e5e1604c66" />
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="f03a9a7c-7d59-407f-9abb-497d38aac3d6" name="Address" isAbstract="false" isLeaf="false" cachedFullName="JustInTimeShippingModeling::Address">
+        <elementDefinition Id="6e06dd33-3227-453e-8144-937653822558" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="7ec376b9-5277-4b2f-830c-0fe91d83bbfd" name="PackageTypeEnum" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e348cd4a-b08a-46c1-88c8-5102d0377494" />
+        <ownedLiterals>
+          <enumerationLiteral Id="b7f3da10-ebd3-4f6f-bb1d-20c45309ab51" name="Letter">
+            <elementDefinition Id="9a11bd97-182f-4e39-89e5-e45cd4addd65" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="56b1f373-70cc-4b1b-9085-04e5a9b5f77f" name="Box">
+            <elementDefinition Id="696d2d23-fc89-4eb9-ae9c-11993e556df4" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="67665cd0-47b8-48ff-b980-c0c668666a0d" name="PackageTypeEnum" isAbstract="false" isLeaf="false" cachedFullName="JustInTimeShippingModeling::PackageTypeEnum">
+        <elementDefinition Id="e348cd4a-b08a-46c1-88c8-5102d0377494" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <enumeration Id="181ba721-31aa-4851-b619-b9e001f62a91" name="DeliveryTypeEnum" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="625785bf-d852-46c4-a7a4-fee3839db1e6" />
+        <ownedLiterals>
+          <enumerationLiteral Id="73f36645-c85c-4cd5-9a33-0ec7276d5370" name="Air">
+            <elementDefinition Id="847f56dc-4af2-4f93-9e1b-0b247a70937e" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="0c715fa5-f6ea-4d0a-816f-92cf097d0faa" name="Ground">
+            <elementDefinition Id="38def974-afbb-4f08-b603-66661104c971" />
+          </enumerationLiteral>
+        </ownedLiterals>
+      </enumeration>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="2aae9c83-7f97-4ed4-b861-e21ad2aaec17" name="DeliveryTypeEnum" isAbstract="false" isLeaf="false" cachedFullName="JustInTimeShippingModeling::DeliveryTypeEnum">
+        <elementDefinition Id="625785bf-d852-46c4-a7a4-fee3839db1e6" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="56886a99-f739-4cbc-bcea-fb7353b3b3ae" name="PackageInfo" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b5a2a39f-297a-4ddc-aa6e-d4111dc42bc9" />
+        <ownedAttributesInternal>
+          <property Id="106430f8-381d-44f2-8533-de177390d8b9" name="Height" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="bcaa8f6e-9b9a-4fea-be3e-c499f6ab78cd" />
+          </property>
+          <property Id="07880a5a-8908-4a7b-89b7-908856d483fd" name="Width" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b7128b30-5a78-4c61-9077-5afea7a7528f" />
+          </property>
+          <property Id="030731f1-c8f3-46bd-8ebf-5781c8cba9b0" name="Depth" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d03fc410-3e03-49ba-b86e-8333c91d5e4b" />
+          </property>
+          <property Id="06af6090-72b1-466d-9a0c-d134282ed8ff" name="PackageType" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="11ac7a29-5c07-4f3d-900c-942f0e98f000" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="67665cd0-47b8-48ff-b980-c0c668666a0d" LastKnownName="PackageTypeEnum" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="3285099a-faf6-4098-90de-2a8b95720c08" name="PackageInfo" isAbstract="false" isLeaf="false" cachedFullName="JustInTimeShippingModeling::PackageInfo">
+        <elementDefinition Id="b5a2a39f-297a-4ddc-aa6e-d4111dc42bc9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="fcdf57c6-3aa1-4ebb-95bf-749a4e2c7968" name="JustInTimeShippingController" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6145edf7-693e-48bb-8220-6b90e031fe53" />
+        <ownedOperationsInternal>
+          <operation Id="28527f08-e9b1-4da3-92f8-c2a26cebfed0" name="Upsert" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7795a22d-d831-4736-ae58-bffab405c7e2" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="bf087b45-c8e8-4d62-a9bd-c969cedb245d" name="ShippingDetail detail" direction="In" isUnique="false">
+                  <elementDefinition Id="93dc38ce-f9a8-4498-94e4-ae32cff931b3" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+  </packagedElements>
+  <package Id="66e66897-6ab9-449d-be61-ddf88d02f0ba" name="JustInTimeShippingModeling">
+    <elementDefinition Id="1409c0b2-1771-482e-a7ea-bd4c2bb0e58f" />
+  </package>
+</logicalClassDesignerModel>

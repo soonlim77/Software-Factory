@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="3b0df1f1-c57f-4477-96a1-6b35b482a4ad" name="UMLUseCaseDiagram1" linkedPackageId="9f4c3329-3b2f-4109-a6e2-de281270b8ad" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="58407952-353a-4f42-81d9-b86a54b0d647" name="Customer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aa95f9d7-d038-401d-b509-8f5269cc7c27" />
+        <targetEnds>
+          <association Id="6096773d-e1a2-4ccd-925c-0445cbe0f1e4" isDerived="false" sourceEndRoleName="Customer" targetEndRoleName="Select Package Type" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="8d1552e4-bbfb-4578-8b05-290b61b950cf" LastKnownName="Select Package Type" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="885149aa-faa3-40f0-8ef3-6ab351dc0755" name="Customer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="abc94db5-0e79-4f1e-b7a4-cc9576dfbed0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="0ad1310e-20ca-443f-ad4e-a954aa51c7cc" name="Select Package Type" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="5786c7db-1cff-49af-b67a-e54a601bb407" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="207a0869-afe0-49a4-bcd9-adf9beacc02b" />
+          </association>
+          <association Id="89af4910-527b-457d-be48-c6ca8ff824f4" isDerived="false" sourceEndRoleName="Customer" targetEndRoleName="Provides Origin &amp; Destination Adresses" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a59aef96-af83-49cd-a819-5fa76bb60384" LastKnownName="Provides Origin &amp; Destination Adresses" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="e28ff64a-40c7-4f7d-9fcc-a75e9ef272b9" name="Customer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6309a428-e1ac-44ce-84ac-f7b2a00d4b95" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8b28d489-be22-4f2d-b962-c5b905baae59" name="Provides Origin &amp; Destination Adresses" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="1e7de99a-c104-49ad-88c6-27303d51b697" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="b73ae051-7873-4cf4-b88c-3443b0358dda" />
+          </association>
+          <association Id="52abfa39-569f-4b5c-b3ed-31c7a66031d3" isDerived="false" sourceEndRoleName="Customer" targetEndRoleName="Select Delivery Type" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="a32fcbce-790e-4e60-9e5a-3f1ffe598652" LastKnownName="Select Delivery Type" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9b8f22f8-9878-47d6-9fd7-52e7a4bda808" name="Customer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e91df4ea-fa7e-4e2c-a0d7-addb1a332ee9" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="07a8fe19-625a-4209-9b76-55a4ac7df316" name="Select Delivery Type" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="89502cf5-2b0f-46c9-8748-44d79a06e5e8" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="6b694d3e-833d-4a46-97d7-4dffdd66a57d" />
+          </association>
+          <association Id="d448917f-f75b-4ca6-be3c-e2849468b690" isDerived="false" sourceEndRoleName="Customer" targetEndRoleName="User Accept or Decline" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="88f3e1ec-75c5-45aa-ad64-2a19749eb2aa" LastKnownName="User Accept or Decline" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="449e118c-c5c1-41e4-acdc-021ed74ed616" name="Customer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="f78d215d-da48-452c-9cf0-aff94a40b011" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d6592e8b-8416-4235-8a0f-ae5d15e6eb2f" name="User Accept or Decline" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="9071b15e-0c34-479c-ad6d-c18669c5aadc" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7ebe9ec3-951e-4383-85c6-155d17258f48" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8d1552e4-bbfb-4578-8b05-290b61b950cf" name="Select Package Type" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="26d6b9b4-43ae-4998-b074-e4edb8a7a566" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a59aef96-af83-49cd-a819-5fa76bb60384" name="Provides Origin &amp; Destination Adresses" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ba7dbae3-e3b4-41b1-bd26-e749a91b08c6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a32fcbce-790e-4e60-9e5a-3f1ffe598652" name="Select Delivery Type" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="af789678-f380-4e7f-adf9-5ad62c57efae" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="88f3e1ec-75c5-45aa-ad64-2a19749eb2aa" name="User Accept or Decline" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="76dac70e-8040-42ac-9fe1-c1872064ffee" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="57c72a8d-8a1d-4c21-a901-1ebd743d74ac" name="Select Package Proof Type" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ca2933a4-041c-45f1-9b9e-67cbc78704bf" />
+        <suppliersInternal>
+          <dependency Id="61496c6a-07ca-4e61-a312-98ad3db0d645">
+            <useCaseMoniker Id="8d1552e4-bbfb-4578-8b05-290b61b950cf" LastKnownName="Select Package Type" />
+            <elementDefinition Id="05a48661-f689-42d8-bac6-400422d6e37a" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="9f4c3329-3b2f-4109-a6e2-de281270b8ad" name="JustInTimeShippingModeling">
+    <elementDefinition Id="1409c0b2-1771-482e-a7ea-bd4c2bb0e58f" />
+    <profileInstances>
+      <packageHasProfileInstances Id="1a231147-0c32-4a69-bc99-28ffe0060d0d">
+        <profileInstance Id="da8b06ab-4767-4c54-92a4-b035333f4a53" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="183690d1-c733-42d1-8bd8-15ff55f62fc1">
+        <profileInstance Id="2af5637a-0e83-40e2-a54b-e5582d96cbe9" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

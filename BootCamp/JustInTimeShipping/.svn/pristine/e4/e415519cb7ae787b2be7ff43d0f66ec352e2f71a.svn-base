@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class JustInTimeShippingFrontController
+    {
+        public string Process(Address originAddress, Address destinationAddress)
+        {
+            StringBuilder strBuilder = new StringBuilder();
+
+            strBuilder.AppendLine("Origin:");
+            strBuilder.AppendLine("=======");
+            strBuilder.AppendLine("Name:       " + originAddress.Name);
+            strBuilder.AppendLine("Street:     " + originAddress.Street);
+            strBuilder.AppendLine("City:       " + originAddress.City);
+            strBuilder.AppendLine("State:      " + originAddress.State);
+            strBuilder.AppendLine("Postal Code:" + originAddress.PostalCode);
+            strBuilder.AppendLine("");
+            strBuilder.AppendLine("Destination:");
+            strBuilder.AppendLine("===========");
+            strBuilder.AppendLine("Name:       " + destinationAddress.Name);
+            strBuilder.AppendLine("Street:     " + destinationAddress.Street);
+            strBuilder.AppendLine("City:       " + destinationAddress.City);
+            strBuilder.AppendLine("State:      " + destinationAddress.State);
+            strBuilder.AppendLine("Postal Code:" + destinationAddress.PostalCode);
+
+            return strBuilder.ToString();
+          
+        }
+    }
+}

@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class DeliveryTimeHandler : IHandler<ShippingDetail, ShippingDetail>
+    {
+        private IDictionary<DeliveryMethodEnum, double> ZoneFactorDict = new Dictionary<DeliveryMethodEnum, double>()
+        {
+            {DeliveryMethodEnum.Air, 0.25},
+            {DeliveryMethodEnum.Ground, 2.0}
+        };
+
+
+        public ShippingDetail Process(ShippingDetail input)
+        {
+            IZoneDifferenceDecorator zoneDiffDecorator;
+            if (input.DeliveryMethod == DeliveryMethodEnum.Rail)
+            {
+                zoneDiffDecorator = ZoneDifferenceDecoratorFactory.GetInstance().GetZoneDifferenceDecoratorInstance(input.DeliveryMethod);
+            }
+            else
+            {
+                zoneDiffDecorator = ZoneDifferenceDecoratorFactory.GetInstance().GetZoneDifferenceDecoratorInstance(input.DeliveryMethod);
+            }
+
+            input.DeliveryTime = ZoneFactorDict[input.DeliveryMethod] * zoneDiffDecorator.Difference(input.OriginAddress.PostalCode, input.DestinationAddress.PostalCode);
+            return input;
+        }
+    }
+}

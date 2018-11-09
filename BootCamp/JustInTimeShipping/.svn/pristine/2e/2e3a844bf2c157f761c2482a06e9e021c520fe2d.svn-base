@@ -1,0 +1,70 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+    [TestClass()]
+    public class JustInTimeShippingFrontControllerTest
+    {
+
+        /// <summary>
+        ///A test for Process
+        ///</summary>
+        [TestMethod()]
+        public void ProcessSuccessfulTest()
+        {
+            JustInTimeShippingFrontHandler target = new JustInTimeShippingFrontHandler(); 
+            ShippingDetail detail = new ShippingDetail();
+            detail.PackageInfo = PackageInfoFactory.GetLetterPackageInstance("Plain");
+            detail.PackageInfo.Weight = 23;
+            detail.DeliveryMethod = DeliveryMethodEnum.Ground;
+            detail.OriginAddress = new Address("John Doe","Happy Street", "KL", "Selangor", "56000");
+            detail.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000"); 
+
+            IResult result = target.Process(detail);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.Message.Length > 0);
+        }
+
+        /// <summary>
+        /// Test sad path when one of the address field is empty
+        ///</summary>
+        [TestMethod()]
+        public void ProcessFailAddressTest()
+        {
+            JustInTimeShippingFrontHandler target = new JustInTimeShippingFrontHandler();
+            ShippingDetail detail = new ShippingDetail();
+            detail.PackageInfo = PackageInfoFactory.GetBoxPackageInstance(10, 10, 10);
+            detail.DeliveryMethod = DeliveryMethodEnum.Ground;
+            detail.OriginAddress = new Address("John Doe", "Happy Street", "", "Selangor", "56000");
+            detail.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "", "56000");
+
+            IResult result = target.Process(detail);
+
+            Assert.IsFalse(result.IsSuccess);
+            Assert.IsTrue(result.Message.Length > 0);
+        }
+
+
+        /// <summary>
+        /// TEst sad path when the postcode is invalid
+        /// </summary>
+        [TestMethod()]
+        public void ProcessFailPostCodeTest()
+        {
+            JustInTimeShippingFrontHandler target = new JustInTimeShippingFrontHandler();
+            ShippingDetail detail = new ShippingDetail();
+            detail.PackageInfo = PackageInfoFactory.GetLetterPackageInstance("Plain");
+            detail.DeliveryMethod = DeliveryMethodEnum.Ground;
+            detail.OriginAddress = new Address("John Doe", "Happy Street", "KL", "Selangor", "5600011");
+            detail.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "5600110");
+
+            IResult result = target.Process(detail);
+
+            Assert.IsFalse(result.IsSuccess);
+            Assert.IsTrue(result.Message.Length > 0);
+        }
+    }
+}

@@ -1,0 +1,35 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+
+namespace JustInTimeShipping.Test
+{
+    [TestClass()]
+    public class ShippingCostHandlerTest
+    {
+
+        [TestMethod()]
+        public void ProcessTest()
+        {
+           
+            ShippingDetail input = new ShippingDetail();
+            input.PackageInfo = PackageInfoFactory.GetLetterPackageInstance("Plain");
+            input.PackageInfo.Weight = 20;
+            input.DeliveryType = DeliveryTypeEnum.Air;
+            input.OriginAddress = new Address("John Doe", "Happy Street", "KL", "Selangor", "56000");
+            input.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000"); 
+                 
+         
+            ShippingCostHandler target = new ShippingCostHandler();
+
+            ShippingDetail actual;
+                        
+            actual = target.Process(input);
+
+            Assert.IsTrue(input.Cost==1.25);
+
+        }
+
+    }
+}

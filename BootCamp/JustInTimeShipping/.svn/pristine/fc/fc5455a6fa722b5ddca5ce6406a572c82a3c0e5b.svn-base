@@ -1,0 +1,28 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+    [TestClass()]
+    public class JustInTimeShippingFrontControllerTest
+    {
+
+        /// <summary>
+        ///A test for Process
+        ///</summary>
+        [TestMethod()]
+        public void ProcessTest()
+        {
+            JustInTimeShippingFrontHandler target = new JustInTimeShippingFrontHandler(); 
+            Address originAddress = new Address("John Doe","Happy Street", "KL", "Selangor", "56000");
+            Address destinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000");
+            ShippingDetail detail = new ShippingDetail();
+
+            IResult result = target.Process(detail);
+
+            Assert.IsTrue(result.IsSuccess);
+            Assert.IsTrue(result.Message.Length > 0);
+        }
+    }
+}

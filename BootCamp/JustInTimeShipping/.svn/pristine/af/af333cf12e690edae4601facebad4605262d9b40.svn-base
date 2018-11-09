@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Windows.Forms;
+using JustInTimeShippingCore;
+
+namespace JustInTimeShippingForm
+{
+    public partial class JustInTimeShippingForm : Form
+    {
+        Address originAddress;
+        Address destinationAddress;
+        JustInTimeShippingFrontController controller = new JustInTimeShippingFrontController();
+
+        public JustInTimeShippingForm()
+        {
+            InitializeComponent();
+        }
+
+
+
+        private void btnProcess_Click(object sender, EventArgs e)
+        {
+
+            originAddress = new Address(txtSender.Text.Trim(), 
+                txtSenderStreet.Text.Trim(), 
+                txtSenderCity.Text.Trim(), 
+                cbSenderStates.SelectedItem.ToString(), 
+                txtSenderPostal.Text.Trim());
+
+            destinationAddress = new Address(txtReceipient.Text.Trim(),
+                txtReceipientStreet.Text.Trim(),
+                txtReceipientCity.Text.Trim(),
+                cbReceipientStates.SelectedItem.ToString(),
+                txtReceipientPostal.Text.Trim());
+
+            MessageBox.Show(controller.Process(originAddress, destinationAddress));
+                    
+        }
+
+        private void txtSender_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        //private bool validationsenderinfo(string sName, string sStreet, string sCity, string sState, string sPostal)
+        //{
+        //    if (sName == null || sStreet == null || sCity == null || sState == null || sPostal == null)
+        //        return false;
+        //    else
+        //        return true;
+     
+        //}
+
+        
+
+
+    }
+}

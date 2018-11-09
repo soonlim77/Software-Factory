@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class DeliveryTimeHandler : IHandler<ShippingDetail, ShippingDetail>
+    {
+        private IDictionary<DeliveryTypeEnum, double> ZoneFactorDict = new Dictionary<DeliveryTypeEnum, double>()
+        {
+            {DeliveryTypeEnum.Air, 0.25},
+            {DeliveryTypeEnum.Ground, 2.0}
+        };
+
+        private Int32[] TimeZoneDifference = new Int32[]
+        {
+            1,
+            1,
+            1,
+            2,
+            2,
+            2,
+            3,
+            3,
+            3,
+            4,
+            4,
+            4
+        };
+
+
+        public ShippingDetail Process(ShippingDetail input)
+        {
+            Decimal fromDigit = input.OriginAddress.PostalCode[0];
+            Decimal toDigit = input.DestinationAddress.PostalCode[1];
+           
+            return input;
+        }
+    }
+}

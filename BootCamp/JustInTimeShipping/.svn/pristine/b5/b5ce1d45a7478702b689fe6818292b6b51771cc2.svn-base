@@ -1,0 +1,105 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+
+namespace JustInTimeShipping.Test
+{
+    [TestClass()]
+    public class ShippingCostHandlerTest
+    {
+
+        [TestMethod()]
+        public void ProcessAirPackageTest()
+        {
+           
+            ShippingDetail input = new ShippingDetail();
+            input.PackageInfo = PackageInfoFactory.GetLetterPackageInstance("Plain");
+            input.PackageInfo.Weight = 20;
+            input.DeliveryMethod = DeliveryMethodEnum.Air;
+            input.OriginAddress = new Address("John Doe", "Happy Street", "KL", "Selangor", "56000");
+            input.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000"); 
+                 
+         
+            ShippingCostCommand target = new ShippingCostCommand();
+
+            ShippingDetail actual;
+                        
+            actual = target.Execute(input);
+
+            Assert.IsTrue(input.Cost==1.25);
+
+        }
+
+
+        [TestMethod()]
+        public void ProcessGroundPackageTest()
+        {
+
+            ShippingDetail input = new ShippingDetail();
+            input.PackageInfo = PackageInfoFactory.GetLetterPackageInstance("Plain");
+            input.PackageInfo.Weight = 20;
+            input.DeliveryMethod = DeliveryMethodEnum.Ground;
+            input.OriginAddress = new Address("John Doe", "Happy Street", "KL", "Selangor", "56000");
+            input.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000");
+
+
+            ShippingCostCommand target = new ShippingCostCommand();
+
+            ShippingDetail actual;
+
+            actual = target.Execute(input);
+
+            Assert.IsTrue(input.Cost == 1.25);
+
+        }
+
+
+        [TestMethod()]
+        public void ProcessGroundBoxInsuredPackageTest()
+        {
+
+            ShippingDetail input = new ShippingDetail();
+            input.IsInsured = true;
+            input.PackageInfo = PackageInfoFactory.GetBoxPackageInstance(10,10,10);
+            input.PackageInfo.Weight = 20;
+            input.DeliveryMethod = DeliveryMethodEnum.Ground;
+            input.OriginAddress = new Address("John Doe", "Happy Street", "KL", "Selangor", "56000");
+            input.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000");
+
+
+            ShippingCostCommand target = new ShippingCostCommand();
+
+            ShippingDetail actual;
+
+            actual = target.Execute(input);
+
+            Assert.IsTrue(input.Cost == 1.275);
+
+        }
+
+        [TestMethod()]
+        public void ProcessRailBoxInsuredPackageTest()
+        {
+
+            ShippingDetail input = new ShippingDetail();
+            input.IsInsured = true;
+            input.PackageInfo = PackageInfoFactory.GetBoxPackageInstance(10, 10, 10);
+            input.PackageInfo.Weight = 20;
+            input.DeliveryMethod = DeliveryMethodEnum.Rail;
+            input.OriginAddress = new Address("John Doe", "Happy Street", "KL", "Selangor", "16000");
+            input.DestinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "46000");
+
+
+            ShippingCostCommand target = new ShippingCostCommand();
+
+            ShippingDetail actual;
+
+            actual = target.Execute(input);
+
+            Assert.IsTrue(input.Cost == 1.275);
+
+        }
+
+    }
+}

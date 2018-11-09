@@ -1,0 +1,96 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+    
+    
+    /// <summary>
+    ///This is a test class for AddressValidatorTest and is intended
+    ///to contain all AddressValidatorTest Unit Tests
+    ///</summary>
+    [TestClass()]
+    public class AddressValidatorTest
+    {
+
+
+        private TestContext testContextInstance;
+
+        /// <summary>
+        ///Gets or sets the test context which provides
+        ///information about and functionality for the current test run.
+        ///</summary>
+        public TestContext TestContext
+        {
+            get
+            {
+                return testContextInstance;
+            }
+            set
+            {
+                testContextInstance = value;
+            }
+        }
+
+        #region Additional test attributes
+        // 
+        //You can use the following additional attributes as you write your tests:
+        //
+        //Use ClassInitialize to run code before running the first test in the class
+        //[ClassInitialize()]
+        //public static void MyClassInitialize(TestContext testContext)
+        //{
+        //}
+        //
+        //Use ClassCleanup to run code after all tests in a class have run
+        //[ClassCleanup()]
+        //public static void MyClassCleanup()
+        //{
+        //}
+        //
+        //Use TestInitialize to run code before running each test
+        //[TestInitialize()]
+        //public void MyTestInitialize()
+        //{
+        //}
+        //
+        //Use TestCleanup to run code after each test has run
+        //[TestCleanup()]
+        //public void MyTestCleanup()
+        //{
+        //}
+        //
+        #endregion
+
+
+        /// <summary>
+        ///A test for address 
+        ///</summary>
+        [TestMethod()]
+        public void ValidateSuccessTest()
+        {
+            AddressValidator target = new AddressValidator(); // TODO: Initialize to an appropriate value
+            Address input =new Address("John","happy street","KL","Selangor","33333"); // TODO: Initialize to an appropriate value
+            ValidationResult expected = ValidationResult.GetSuccessResult();
+            ValidationResult actual;
+            actual = target.Validate(input);
+            Assert.AreEqual(expected.result, actual.result);
+           
+        }
+
+
+        [TestMethod()]
+        public void ValidateFailTest()
+        {
+            AddressValidator target = new AddressValidator(); // TODO: Initialize to an appropriate value
+            Address input = new Address("John", "happy street", "", "Selangor", "33333"); // TODO: Initialize to an appropriate value
+            ValidationResult expected = ValidationResult.GetFailResult("None of fields can be null");
+            ValidationResult actual;
+            actual = target.Validate(input);
+            Assert.AreEqual(expected.result, actual.result);
+
+        }
+
+    }
+}

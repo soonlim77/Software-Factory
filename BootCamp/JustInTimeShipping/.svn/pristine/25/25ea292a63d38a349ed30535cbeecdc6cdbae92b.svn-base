@@ -1,0 +1,39 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+   public  class PackageInfo
+    {
+       
+
+
+        public PackageInfo(PackageTypeEnum packageTypeEnum, int numHeight, int numWidth, int numDepth)
+       {
+
+           this.PackageType = packageTypeEnum;
+           this.Height = numHeight;
+           this.Width = numWidth;
+           this.Depth = numDepth;
+       }
+
+        public PackageInfo(PackageTypeEnum packageTypeEnum)
+        {
+
+            this.PackageType = packageTypeEnum;
+        }
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public int Depth { get; set; }
+        public PackageTypeEnum PackageType { get; set; }
+    }
+
+   public enum PackageTypeEnum
+   {
+       Box, Letter
+   }
+}
+
+

@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class DeliveryRequestHandler : IHandler<ProcessStatus, DeliveryRequestInfo>
+    {
+        public ProcessStatus Process(DeliveryRequestInfo input)
+        {
+            ShippingDetail data = new ShippingDetail();
+            ProcessStatus status = null;
+
+            try
+            {
+                // Translate
+                data.DestinationAddress = input.Dest;
+                data.OriginAddress = input.Origin;
+                data.Id = input.Id;
+
+                // Translate Package Type
+                switch (input.Type[0])
+                {
+                    case 'L':
+                        data.PackageInfo = new PackageInfo(input.LType);
+                        break;
+                    case 'B':
+                        data.PackageInfo = new PackageInfo(Convert.ToInt32(input.Height), Convert.ToInt32(input.Width), Convert.ToInt32(input.Depth));
+                        break;
+                }
+
+
+                // Translate Delivery Type
+                switch (input.Type[1])
+                {
+                    case 'A':
+                        data.DeliveryType = DeliveryTypeEnum.Air;
+                        break;
+                    case 'G':
+                        data.DeliveryType = DeliveryTypeEnum.Ground;
+                        break;
+
+                }
+            }
+            catch (Exception e)
+            {
+                status = ProcessStatus.GetFail(e.Message);
+            }
+
+
+            if (status == null) 
+            {
+                JustInTimeShippingFrontController controller = new JustInTimeShippingFrontController();
+                status = controller.Process(data);
+            }
+
+            return status;
+        }
+    }
+}

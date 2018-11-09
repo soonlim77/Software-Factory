@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class DeliveryTimeHandler : IHandler<ShippingDetail, ShippingDetail>
+    {
+        private IDictionary<DeliveryTypeEnum, double> ZoneFactorDict = new Dictionary<DeliveryTypeEnum, double>()
+        {
+            {DeliveryTypeEnum.Air, 0.25},
+            {DeliveryTypeEnum.Ground, 2.0}
+        };
+
+        private Int32[] TimeZoneCoefficient = new Int32[]
+        {
+            1, // 0
+            1, // 1
+            1, // 2
+            2, // 3
+            2, // 4
+            2, // 5
+            3, // 6
+            3, // 7
+            4, // 8
+            4  // 9
+        };
+
+        // Returns the time zone difference
+        private int GetTimeZoneDifference(Address from, Address to)
+        {
+            int fromDigit = Convert.ToInt32(from.PostalCode.Substring(0,1));
+            int toDigit = Convert.ToInt32(to.PostalCode.Substring(0,1));
+            int difference = Math.Abs(TimeZoneCoefficient[fromDigit] - TimeZoneCoefficient[toDigit]) + 1;
+            return difference;
+        }
+
+        public ShippingDetail Process(ShippingDetail input)
+        {
+            input.DeliveryTime = ZoneFactorDict[input.DeliveryType] * GetTimeZoneDifference(input.OriginAddress, input.DestinationAddress);
+            return input;
+        }
+    }
+}

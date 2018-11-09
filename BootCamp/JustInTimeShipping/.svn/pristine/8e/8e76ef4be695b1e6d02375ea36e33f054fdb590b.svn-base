@@ -1,0 +1,40 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class TimeZoneDifferenceHelper 
+    {
+        private static Int32[] TimeZoneCoefficient = new Int32[]
+        {
+            1, // 0
+            1, // 1
+            1, // 2
+            2, // 3
+            2, // 4
+            2, // 5
+            3, // 6
+            3, // 7
+            4, // 8
+            4  // 9
+        };
+
+        // Returns the time zone difference by Address
+        public static  int GetTimeZoneDifference(Address from, Address to)
+        {
+            return GetTimeZoneDifference(from.PostalCode, to.PostalCode);
+        }
+
+        // Returns the time zone difference by Postcode
+        public static int GetTimeZoneDifference(string fromPostCode, string toPostCode)
+        {
+            int fromDigit = Convert.ToInt32(fromPostCode.Substring(0, 1));
+            int toDigit = Convert.ToInt32(toPostCode.Substring(0, 1));
+            int difference = Math.Abs(TimeZoneCoefficient[fromDigit] - TimeZoneCoefficient[toDigit]) + 1;
+            return difference;
+        }
+
+    }
+}

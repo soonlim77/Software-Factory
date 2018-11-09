@@ -1,0 +1,33 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    [Serializable]
+    public class ShippingDetail : IEntity
+    {
+        public double Cost { get; set; }
+        public double DeliveryTime { get; set; }
+        public Address OriginAddress { get; set; }
+        public Address DestinationAddress { get; set; }
+        public long Id { get; set; }
+        public PackageInfo PackageInfo { get; set; } 
+        public DeliveryMethodEnum DeliveryMethod { get; set; }
+        public bool IsInsured { get; set; }
+
+        public ShippingDetail()
+        {
+            IsInsured = false;
+            this.Id = new Random().Next(99999, 99999999);
+        }
+    }
+
+    public enum DeliveryMethodEnum
+    {
+        Air,
+        Ground,
+        Rail
+    };
+}

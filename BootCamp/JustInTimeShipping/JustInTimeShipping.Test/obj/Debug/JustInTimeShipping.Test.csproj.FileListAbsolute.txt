@@ -1,0 +1,10 @@
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\JustInTimeShipping.Test.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\JustInTimeShipping.Test.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\JustInTimeShippingCore.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\SAM.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\JustInTimeShippingCore.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\JustInTimeShippingCore_Accessor.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\bin\Debug\JustInTimeShippingCore_Accessor.pdb
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\obj\Debug\ResolveAssemblyReference.cache
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\obj\Debug\JustInTimeShipping.Test.dll
+C:\BootCampTraining\JustInTimeShipping\JustInTimeShipping.Test\obj\Debug\JustInTimeShipping.Test.pdb

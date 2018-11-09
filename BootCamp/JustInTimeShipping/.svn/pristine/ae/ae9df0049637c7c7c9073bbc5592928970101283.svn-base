@@ -1,0 +1,53 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class ShippingCostHandler : IHandler<ShippingDetail, ShippingDetail>
+    {
+        // Convert Ounce to Pound. If less than 1, then return 1
+        private double OunceToPound(double ounce)
+        {
+            double result = ounce * 0.0625;
+            return (result < 1 ? 1 : result);
+        }
+
+        // Calculate Package Volume. If less than 1, then return 1
+        private double GetPackageVolume(PackageInfo packageInfo)
+        {
+            double result=1;
+            switch (packageInfo.PackageType)
+            {
+                case PackageTypeEnum.Box:
+                    result = packageInfo.BoxInfo.Width * packageInfo.BoxInfo.Height * packageInfo.BoxInfo.Depth;
+                    break;
+                case PackageTypeEnum.Letter:
+                    result = 1;
+                    break;
+            }
+            return (result < 1 ? 1 : result);
+        }
+
+        public ShippingDetail Process(ShippingDetail input)
+        {
+            int timeZoneDifference = TimeZoneDifferenceHelper.GetTimeZoneDifference (input.OriginAddress.PostalCode, input.DestinationAddress.PostalCode);
+
+            switch (input.DeliveryType)
+            {
+                case DeliveryTypeEnum.Air:
+                    input.Cost = timeZoneDifference * OunceToPound(Convert.ToDouble(input.PackageInfo.Weight)) * GetPackageVolume(input.PackageInfo);
+                    break;
+                case DeliveryTypeEnum.Ground:
+                    input.Cost = timeZoneDifference * OunceToPound(Convert.ToDouble(input.PackageInfo.Weight));
+                    break;
+                default:
+                    throw new InvalidOperationException();
+            }
+
+            return input;
+        }
+
+    }
+}

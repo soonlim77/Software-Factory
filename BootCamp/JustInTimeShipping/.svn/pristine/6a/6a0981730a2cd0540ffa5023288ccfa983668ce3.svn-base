@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class PackageInfoValidator:IValidator<PackageInfo>
+    {
+
+        #region IValidator<PackageInfo> Members
+        public PackageInfoValidator()
+        {         
+        
+        }
+
+       public IResult Validate(PackageInfo input)
+       {
+           if (input.PackageType==PackageTypeEnum.Box)
+           {
+               if ((input.BoxInfo.Height > 0) &&
+                      (input.BoxInfo.Width > 0) &&
+                      (input.BoxInfo.Depth > 0))
+               {
+                   return ResultFactory.GetSuccessResultInstance();
+               }
+               else
+               {
+                   return ResultFactory.GetFailResultInstance("All dimension of boxes must be greater than 0");
+               }
+           }
+           return ResultFactory.GetSuccessResultInstance();
+        }
+
+
+
+
+
+        #endregion
+    }
+}

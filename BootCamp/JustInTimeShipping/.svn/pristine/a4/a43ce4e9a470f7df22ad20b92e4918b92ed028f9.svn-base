@@ -1,0 +1,41 @@
+﻿using JustInTimeShippingCore;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
+
+namespace JustInTimeShipping.Test
+{
+    [TestClass()]
+    public class JustInTimeShippingFrontControllerTest
+    {
+
+        /// <summary>
+        ///A test for Process
+        ///</summary>
+        [TestMethod()]
+        public void ProcessTest()
+        {
+            JustInTimeShippingFrontController target = new JustInTimeShippingFrontController(); 
+            Address originAddress = new Address("John Doe","Happy Street", "KL", "Selangor", "56000");
+            Address destinationAddress = new Address("Jane Doe", "Sad Street", "KL", "Selangor", "56000");
+            string expected = "Origin:" + "\r\n" +
+                            "=======" + "\r\n" +
+                            "Name:       John Doe" + "\r\n" +
+                            "Street:     Happy Street" + "\r\n" +
+                            "City:       KL" + "\r\n" +
+                            "State:      Selangor" + "\r\n" +
+                            "Postal Code:56000" + "\r\n" +
+                            "" + "\r\n" +
+                            "Destination:" + "\r\n" +
+                            "===========" + "\r\n" +
+                            "Name:       Jane Doe" + "\r\n" +
+                            "Street:     Sad Street" + "\r\n" +
+                            "City:       KL" + "\r\n" +
+                            "State:      Selangor" + "\r\n" +
+                            "Postal Code:56000" + "\r\n";
+
+            string actual = target.Process(originAddress, destinationAddress);
+            Assert.IsTrue(expected.CompareTo( actual) == 0);
+           
+        }
+    }
+}

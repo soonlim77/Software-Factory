@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+    public class LetterInfo : AbstractPackageInfo
+    {
+        public LetterInfo()
+        {
+            this.PackageType = PackageTypeEnum.Letter;
+        }
+
+        public PackageProofTypeEnum LetterProofType { get; set; }
+    }
+}

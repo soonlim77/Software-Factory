@@ -1,0 +1,34 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.ComponentModel.DataAnnotations;
+using JustInTimeShippingCore;
+using JustInTimeShippingWeb.Models;
+
+namespace JustInTimeShippingWeb.Helpers
+{
+    public class ViewModelHelper
+    {
+        public static ShippingConfirmation ConvertToShippingConfirmation(ShippingDetail detail)
+        {
+            ShippingConfirmation result = new ShippingConfirmation();
+            result.DCity = detail.DestinationAddress.City;
+            result.DName = detail.DestinationAddress.Name;
+            result.DStreet = detail.DestinationAddress.Street;
+
+
+            return result;
+        }
+
+        public static ShippingDetail ConvertToShippingDetail(CreateShippingRequestViewModel model)
+        {
+            return null;
+        }
+
+        public static ShippingDetail ConvertToShippingDetail(ShippingConfirmation model)
+        {
+            return null;
+        }
+    }
+}

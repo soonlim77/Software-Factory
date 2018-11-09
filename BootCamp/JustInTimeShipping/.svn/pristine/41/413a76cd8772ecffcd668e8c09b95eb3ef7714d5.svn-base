@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace JustInTimeShippingCore
+{
+   public class DeliveryTypeValidator:IValidator<String>
+    {
+
+      
+        #region IValidator<string> Members
+
+       public ValidationResult Validate(string input)
+        {
+            if (!string.IsNullOrEmpty(input))
+                return ValidationResult.GetSuccessResult();
+            else
+                return ValidationResult.GetFailResult("Delivery type can't be blank");
+
+
+        }
+
+        #endregion
+   }
+}

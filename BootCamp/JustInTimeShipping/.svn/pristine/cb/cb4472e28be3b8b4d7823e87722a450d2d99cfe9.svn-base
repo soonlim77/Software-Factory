@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using SAM;
+
+namespace JustInTimeShippingCore
+{
+    public class WeightPackageHandler : IHandler<Decimal, PackageInfo>
+    {
+        public Decimal Process(PackageInfo input = null)
+        {
+            ScaleFactory factory = new ScaleFactory();
+            ScaleProperties prop = new ScaleProperties();
+
+            Scale scale = factory.CreateScale();
+            scale.Tare();
+            scale.UpdateWeight();            
+            Decimal Weight = Math.Ceiling( scale.GetWeight());
+            return Weight;
+        }
+    }
+}
