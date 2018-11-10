@@ -1,7 +1,0 @@
-C:\Temp\Axceligent\Axceligent\obj\Debug\Axceligent.csprojAssemblyReference.cache
-C:\Temp\Axceligent\Axceligent\obj\Debug\Axceligent.csproj.CoreCompileInputs.cache
-C:\Temp\Axceligent\Axceligent\bin\Debug\Axceligent.exe.config
-C:\Temp\Axceligent\Axceligent\bin\Debug\Axceligent.exe
-C:\Temp\Axceligent\Axceligent\bin\Debug\Axceligent.pdb
-C:\Temp\Axceligent\Axceligent\obj\Debug\Axceligent.exe
-C:\Temp\Axceligent\Axceligent\obj\Debug\Axceligent.pdb
